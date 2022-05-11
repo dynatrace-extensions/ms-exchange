@@ -1,0 +1,18 @@
+{
+    "metricId": "com.dynatrace.extension.ms-exchange.queue.external.total.length",
+    "name": "MSExchange External Queue Length",
+    "description": "High value of external queue length",
+    "aggregationType": "AVG",
+    "severity": "CUSTOM_ALERT",
+    "enabled": true,
+    "monitoringStrategy": {
+        "type": "AUTO_ADAPTIVE_BASELINE",
+        "samples": 5,
+        "violatingSamples": 3,
+        "dealertingSamples": 3,
+        "alertCondition": "ABOVE",
+        "numberOfSignalFluctuations": 1,
+        "alertingOnMissingData": false
+    },
+    "eventType": "CUSTOM_ALERT"
+}

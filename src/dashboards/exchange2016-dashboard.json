@@ -1,0 +1,2004 @@
+{
+  "metadata": {
+    "configurationVersions": [
+      5
+    ],
+    "clusterVersion": "1.223.0.20210705-185933"
+  },
+  "id": "28d41c4a-e78f-4b2b-a79f-758dff7aafcb",
+  "dashboardMetadata": {
+    "name": "MS Exchange",
+    "shared": false,
+    "owner": "Dynatrace",
+    "dashboardFilter": {
+      "timeframe": "-2h"
+    }
+  },
+  "tiles": [
+    {
+      "name": "Received messages",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 228,
+        "left": 0,
+        "width": 1368,
+        "height": 38
+      },
+      "tileFilter": {}
+    },
+    {
+      "name": "Sent messages",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 570,
+        "left": 0,
+        "width": 1368,
+        "height": 38
+      },
+      "tileFilter": {}
+    },
+    {
+      "name": "Sent messages",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 608,
+        "left": 0,
+        "width": 684,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "com.dynatrace.extension.ms-exchange.mailbox.messages.sent.persec",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.wmi:com_dynatrace_extension_exchange_instance"],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.mailbox.messages.sent.persec:splitBy():avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "External",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 1292,
+        "left": 0,
+        "width": 1368,
+        "height": 304
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.external.active.length",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.wmi:com_dynatrace_extension_exchange_instance"],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.external.active.length:splitBy():avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.external.total.length",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.wmi:com_dynatrace_extension_exchange_instance"],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.external.total.length:splitBy():avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          },
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Active queue",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 912,
+        "left": 0,
+        "width": 1368,
+        "height": 38
+      },
+      "tileFilter": {}
+    },
+    {
+      "name": "External queue",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 1254,
+        "left": 0,
+        "width": 1368,
+        "height": 38
+      },
+      "tileFilter": {}
+    },
+    {
+      "name": "Internal queue",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 1634,
+        "left": 0,
+        "width": 1368,
+        "height": 38
+      },
+      "tileFilter": {}
+    },
+    {
+      "name": "Retry queue",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 1976,
+        "left": 0,
+        "width": 684,
+        "height": 38
+      },
+      "tileFilter": {}
+    },
+    {
+      "name": "Retry",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 2014,
+        "left": 0,
+        "width": 684,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.retry.mailbox.length",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.wmi:com_dynatrace_extension_exchange_instance"],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.retry.mailbox.length:splitBy():avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.retry.nonsmtp.length",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.wmi:com_dynatrace_extension_exchange_instance"],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.retry.nonsmtp.length:splitBy():avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          },
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Submission queue",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 2318,
+        "left": 0,
+        "width": 1368,
+        "height": 38
+      },
+      "tileFilter": {}
+    },
+    {
+      "name": "Submission length",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 2356,
+        "left": 0,
+        "width": 456,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.submission.length",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.wmi:com_dynatrace_extension_exchange_instance"],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.submission.length:splitBy():avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "seriesType": "COLUMN"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Poison message queue",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 1976,
+        "left": 684,
+        "width": 684,
+        "height": 38
+      },
+      "tileFilter": {}
+    },
+    {
+      "name": "Poison length",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 2014,
+        "left": 684,
+        "width": 684,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.poison.length",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.wmi:com_dynatrace_extension_exchange_instance"],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.poison.length:splitBy():avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "seriesType": "COLUMN"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Queue items",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 2736,
+        "left": 0,
+        "width": 2052,
+        "height": 38
+      },
+      "tileFilter": {}
+    },
+    {
+      "name": "Items completed per sec",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 3116,
+        "left": 0,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.items.completed.persec",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.items.completed.persec:splitBy(queue.priority):avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.items.completed.persec",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Queue messages",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 3496,
+        "left": 0,
+        "width": 2052,
+        "height": 38
+      },
+      "tileFilter": {}
+    },
+    {
+      "name": "Items Queued per sec",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 2774,
+        "left": 0,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.items.queued.persec",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.items.queued.persec:splitBy(queue.priority):avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.items.queued.persec",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Active nonsmtp",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 950,
+        "left": 684,
+        "width": 684,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.active.nonsmtp.length",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.active.nonsmtp.length:splitBy(queue.priority):avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Active mailbox",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 950,
+        "left": 0,
+        "width": 684,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.active.mailbox.length",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.active.mailbox.length:splitBy(queue.priority):avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Internal Active",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 1672,
+        "left": 0,
+        "width": 684,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.internal.active.length",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.internal.active.length:splitBy(queue.priority):avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Internal Total",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 1672,
+        "left": 684,
+        "width": 684,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.internal.total.length",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.internal.total.length:splitBy(queue.priority):avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Total items completed",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 3116,
+        "left": 684,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.items.completed.total.count",
+          "spaceAggregation": "MAX",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 100,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.items.completed.total.count:fold:splitBy(queue.priority):max:auto:sort(value(avg,descending)):limit(100)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.items.completed.total.count",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Submission expired",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 2356,
+        "left": 456,
+        "width": 456,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.submission.expired",
+          "spaceAggregation": "MAX",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 100,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.submission.expired:fold:splitBy(queue.priority):max:auto:sort(value(avg,descending)):limit(100)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.submission.expired",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "seriesType": "COLUMN"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Submission deffered",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 2356,
+        "left": 912,
+        "width": 456,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.submission.deffered",
+          "spaceAggregation": "MAX",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 100,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.submission.deffered:fold:splitBy(queue.priority):max:auto:sort(value(avg,descending)):limit(100)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "seriesType": "COLUMN"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Total items queued",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 2774,
+        "left": 684,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.items.queued.total.count",
+          "spaceAggregation": "MAX",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 100,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.items.queued.total.count:fold:splitBy(queue.priority):max:auto:sort(value(avg,descending)):limit(100)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.items.queued.total.count",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Received messages",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 266,
+        "left": 0,
+        "width": 684,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "com.dynatrace.extension.ms-exchange.mailbox.messages.received.persec",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["dt.entity.wmi:com_dynatrace_extension_exchange_instance"],
+          "filterBy": {
+            "filterOperator": "AND",
+            "nestedFilters": [
+              {
+                "filter": "mailbox.name",
+                "filterType": "DIMENSION",
+                "filterOperator": "OR",
+                "nestedFilters": [],
+                "criteria": [
+                  {
+                    "value": "_total",
+                    "evaluator": "EQ"
+                  }
+                ]
+              }
+            ],
+            "criteria": []
+          },
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.mailbox.messages.received.persec:filter(and(eq(mailbox.name,_total))):splitBy():avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Received messages",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 266,
+        "left": 684,
+        "width": 684,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.mailbox.messages.received.total.count",
+          "spaceAggregation": "MAX",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "mailbox.name",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 100,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.mailbox.messages.received.total.count:last:splitBy(mailbox.name):max:auto:sort(value(avg,descending)):limit(100)",
+          "foldTransformation": "LAST_VALUE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.mailbox.messages.received.total.count",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "COLUMN"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Sent messages",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 608,
+        "left": 684,
+        "width": 684,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "com.dynatrace.extension.ms-exchange.mailbox.messages.sent.total.count",
+          "spaceAggregation": "MAX",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "mailbox.name",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 100,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.mailbox.messages.sent.total.count:fold:splitBy(mailbox.name):max:auto:sort(value(avg,descending)):limit(100)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.mailbox.messages.sent.total.count",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Messages Delayed",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 3876,
+        "left": 684,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.messages.delayed.total.count",
+          "spaceAggregation": "MAX",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 100,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.messages.delayed.total.count:fold:splitBy(queue.priority):max:auto:sort(value(avg,descending)):limit(100)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.messages.delayed.total.count",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Messages Completed Delivery",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 3534,
+        "left": 684,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.messages.completed.total.count",
+          "spaceAggregation": "MAX",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 100,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.messages.completed.total.count:fold:splitBy(queue.priority):max:auto:sort(value(avg,descending)):limit(100)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.messages.completed.total.count",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Completed messages per sec",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 3534,
+        "left": 0,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.messages.completed.persec",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.messages.completed.persec:splitBy(queue.priority):avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.messages.completed.persec",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Items queued for delivery expired",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 2774,
+        "left": 1368,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.items.queued.expired.count",
+          "spaceAggregation": "MAX",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 100,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.items.queued.expired.count:fold:splitBy(queue.priority):max:auto:sort(value(avg,descending)):limit(100)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.items.queued.expired.count",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Messages delayed per sec",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 3876,
+        "left": 0,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.messages.delayed.persec",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.messages.delayed.persec:splitBy(queue.priority):avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.messages.delayed.persec",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Messages Queued for delivery per sec",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 4560,
+        "left": 0,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.messages.queued.persec",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.messages.queued.persec:splitBy(queue.priority):avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.messages.queued.persec",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Messages queued for delivery",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 4560,
+        "left": 684,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.messages.queued",
+          "spaceAggregation": "MAX",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 100,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.messages.queued:fold:splitBy(queue.priority):max:auto:sort(value(avg,descending)):limit(100)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.messages.queued",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Messages queued for delivery total",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 4560,
+        "left": 1368,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.messages.queued.total.count",
+          "spaceAggregation": "MAX",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 100,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.messages.queued.total.count:fold:splitBy(queue.priority):max:auto:sort(value(avg,descending)):limit(100)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.messages.queued.total.count",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Messages submitted total",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 4218,
+        "left": 684,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.messages.submitted.total.count",
+          "spaceAggregation": "MAX",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 100,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.messages.submitted.total.count:fold:splitBy(queue.priority):max:auto:sort(value(avg,descending)):limit(100)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.messages.submitted.total.count",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Messages submitted per sec",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 4218,
+        "left": 0,
+        "width": 684,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Explorer results",
+      "queries": [
+        {
+          "id": "B",
+          "metric": "com.dynatrace.extension.ms-exchange.queue.messages.submitted.persec",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "queue.priority",
+            "dt.entity.wmi:com_dynatrace_extension_exchange_instance"
+          ],
+          "limit": 20,
+          "metricSelector": "com.dynatrace.extension.ms-exchange.queue.messages.submitted.persec:splitBy(queue.priority):avg:auto:sort(value(avg,descending)):limit(20)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "theme": "PURPLE",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "com.dynatrace.extension.ms-exchange.queue.messages.submitted.persec",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [
+          {
+            "matcher": "B:",
+            "properties": {
+              "seriesType": "LINE"
+            }
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    },
+    {
+      "name": "Instances",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 684,
+        "height": 190
+      },
+      "tileFilter": {},
+      "customName": "Instances",
+      "queries": [
+        {
+          "id": "A",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "metricSelector": "com.dynatrace.extension.ms-exchange.mailbox.messages.received.total.count:splitBy(\"dt.entity.wmi:com_dynatrace_extension_exchange_instance\"):avg:auto:sort(value(avg,descending)):limit(10)",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {
+          "theme": "DEFAULT",
+          "threshold": {
+            "axisTarget": "LEFT",
+            "columnId": "Messages received",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ]
+          },
+          "seriesType": "LINE"
+        },
+        "rules": [],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        }
+      }
+    }
+  ]
+}

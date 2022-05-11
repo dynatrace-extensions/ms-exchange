@@ -1,0 +1,731 @@
+name: com.dynatrace.extension.ms-exchange
+version: 1.2.3
+minDynatraceVersion: "1.223"
+author:
+  name: Dynatrace
+
+metrics:
+  - key: com.dynatrace.extension.ms-exchange.mailbox.messages.sent.total.count
+    metadata:
+      displayName: Messages sent
+      description: Number of messages sent by the send connector
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.mailbox.messages.sent.persec
+    metadata:
+      displayName: Messages sent/s
+      description: Number of messages sent by the send connector each second
+      unit: PerSecond
+  - key: com.dynatrace.extension.ms-exchange.mailbox.bytes.sent.total.count
+    metadata:
+      displayName: Bytes sent
+      description: Total number of bytes successfully sent
+      unit: Byte
+  - key: com.dynatrace.extension.ms-exchange.mailbox.bytes.sent.persec
+    metadata:
+      displayName: Bytes sent/s
+      description: Number of bytes sent per second
+      unit: BytePerSecond
+  - key: com.dynatrace.extension.ms-exchange.mailbox.messages.received.total.count
+    metadata:
+      displayName: Messages received
+      description: Number of messages received by the SMTP server
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.mailbox.messages.received.persec
+    metadata:
+      displayName: Messages received/s
+      description: Number of messages received by the SMTP server each second
+      unit: PerSecond
+  - key: com.dynatrace.extension.ms-exchange.mailbox.bytes.received.total.count
+    metadata:
+      displayName: Bytes received
+      description: Total number of bytes received and committed to the database
+      unit: Byte
+  - key: com.dynatrace.extension.ms-exchange.mailbox.bytes.received.persec
+    metadata:
+      displayName: Bytes received/s
+      description: Number of bytes received per second
+      unit: BytePerSecond
+  - key: com.dynatrace.extension.ms-exchange.mailbox.messages.refused.forsize.count
+    metadata:
+      displayName: Rejected messages
+      description: Number of messages that are rejected
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.active.mailbox.length
+    metadata:
+      displayName: Active mailbox delivery queue
+      description: Length of active mailbox delivery queue
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.active.nonsmtp.length
+    metadata:
+      displayName: Active non SMTP delivery queue
+      description: Length of active non SMTP delivery queue
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.external.active.length
+    metadata:
+      displayName: External active remote delivery queue
+      description: Length of external active remote delivery queue
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.external.total.length
+    metadata:
+      displayName: All external remote delivery queues
+      description: Aggregated length of all of external remote delivery queues
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.internal.active.length
+    metadata:
+      displayName: Internal active remote delivery queue
+      description: Length of internal active remote delivery queue
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.internal.total.length
+    metadata:
+      displayName: All internal remote delivery queues
+      description: Aggregated length of all of internal remote delivery queues
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.poison.length
+    metadata:
+      displayName: Poison queue
+      description: Length of poison queue
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.retry.mailbox.length
+    metadata:
+      displayName: Mailbox retry delivery queues
+      description: Length of mailbox retry delivery queues
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.retry.nonsmtp.length
+    metadata:
+      displayName: Non SMTP retry delivery queues
+      description: Length of non SMTP retry delivery queues
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.submission.length
+    metadata:
+      displayName: Submission queue
+      description: Length of submission queue
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.submission.expired
+    metadata:
+      displayName: Expired messages in submission queue
+      description: Number of expired messages in submission queue
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.submission.deffered
+    metadata:
+      displayName: Deffered messages in submission queue
+      description: Number of deffered messages in submission queue
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.items.completed.total.count
+    metadata:
+      displayName: Completed items
+      description: Total number of completed items
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.items.completed.persec
+    metadata:
+      displayName: Completed items/s
+      description: Number of completed items per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.ms-exchange.queue.items.queued.total.count
+    metadata:
+      displayName: Queued items
+      description: Total number of queued items
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.items.queued.persec
+    metadata:
+      displayName: Queued items/s
+      description: Number of queued items per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.ms-exchange.queue.items.queued.expired.count
+    metadata:
+      displayName: Expired queued items
+      description: Number of expired queued items
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.messages.completed.total.count
+    metadata:
+      displayName: Completed messages
+      description: Total number of completed messages
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.messages.completed.persec
+    metadata:
+      displayName: Completed messages/s
+      description: Number of completed messages per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.ms-exchange.queue.messages.delayed.total.count
+    metadata:
+      displayName: Delayed messages
+      description: Total number of delayed messages
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.messages.delayed.persec
+    metadata:
+      displayName: Delayed messages/s
+      description: Number of delayed messages per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.ms-exchange.queue.messages.queued
+    metadata:
+      displayName: Queued messages
+      description: Number of queued messages
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.messages.queued.total.count
+    metadata:
+      displayName: Queued messages total
+      description: Total number of queued messages
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.messages.queued.persec
+    metadata:
+      displayName: Queued messages/s
+      description: Number of queued messages per second
+      unit: PerSecond
+  - key: com.dynatrace.extension.ms-exchange.queue.messages.submitted.total.count
+    metadata:
+      displayName: Submitted messages
+      description: Total number of submitted messages
+      unit: Count
+  - key: com.dynatrace.extension.ms-exchange.queue.messages.submitted.persec
+    metadata:
+      displayName: Submitted messages/s
+      description: Number of submitted messages per second
+      unit: PerSecond
+
+wmi:
+  - group: MSExchangeMessages
+    interval: 1m
+    dimensions:
+      - key: host
+        value: this:device.host
+    subgroups:
+      - subgroup: MessagesSent
+        query: SELECT Name, MessagesSentTotal, MessagesSentPersec, MessageBytesSentTotal, MessageBytesSentPersec FROM Win32_PerfFormattedData_MSExchangeDeliverySmtpSend_MSExchangeDeliverySmtpSend
+        metrics:
+          - key: com.dynatrace.extension.ms-exchange.mailbox.messages.sent.total
+            value: column:MessagesSentTotal
+            type: count
+          - key: com.dynatrace.extension.ms-exchange.mailbox.messages.sent.persec
+            value: column:MessagesSentPersec
+          - key: com.dynatrace.extension.ms-exchange.mailbox.bytes.sent.total
+            value: column:MessageBytesSentTotal
+            type: count
+            featureSet: bytes
+          - key: com.dynatrace.extension.ms-exchange.mailbox.bytes.sent.persec
+            value: column:MessageBytesSentPersec
+            featureSet: bytes
+        dimensions:
+        - key: mailbox.name
+          value: column:Name
+      - subgroup: MessagesReceived
+        query: SELECT Name, MessagesReceivedTotal, MessagesReceivedPersec, MessageBytesReceivedTotal, MessageBytesReceivedPersec, MessagesRefusedforSize FROM Win32_PerfFormattedData_MSExchangeDeliverySmtpReceive_MSExchangeDeliverySmtpReceive
+        metrics:
+          - key: com.dynatrace.extension.ms-exchange.mailbox.messages.received.total
+            value: column:MessagesReceivedTotal
+            type: count
+          - key: com.dynatrace.extension.ms-exchange.mailbox.messages.received.persec
+            value: column:MessagesReceivedPersec
+          - key: com.dynatrace.extension.ms-exchange.mailbox.bytes.received.total
+            value: column:MessageBytesReceivedTotal
+            type: count
+            featureSet: bytes
+          - key: com.dynatrace.extension.ms-exchange.mailbox.bytes.received.persec
+            value: column:MessageBytesReceivedPersec
+            featureSet: bytes
+          - key: com.dynatrace.extension.ms-exchange.mailbox.messages.refused.forsize
+            value: column:MessagesRefusedforSize
+            type: count
+        dimensions:
+        - key: mailbox.name
+          value: column:Name
+  - group: MSExchangeQueues
+    interval: 1m
+    dimensions:
+      - key: host
+        value: this:device.host
+    subgroups:
+      - subgroup: QueuesLength
+        query: SELECT Name, ActiveMailboxDeliveryQueueLength, ActiveNonSmtpDeliveryQueueLength, ExternalActiveRemoteDeliveryQueueLength, ExternalAggregateDeliveryQueueLengthAllExternalQueues, InternalActiveRemoteDeliveryQueueLength, InternalAggregateDeliveryQueueLengthAllInternalQueues, PoisonQueueLength, RetryMailboxDeliveryQueueLength, RetryNonSmtpDeliveryQueueLength, SubmissionQueueLength, SubmissionQueueItemsExpiredTotal FROM Win32_PerfFormattedData_MSExchangeTransportQueues_MSExchangeTransportQueues
+        featureSet: queues_2013
+        metrics:
+        - key: com.dynatrace.extension.ms-exchange.queue.active.mailbox.length
+          value: column:ActiveMailboxDeliveryQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.active.nonsmtp.length
+          value: column:ActiveNonSmtpDeliveryQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.external.active.length
+          value: column:ExternalActiveRemoteDeliveryQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.external.total.length
+          value: column:ExternalAggregateDeliveryQueueLengthAllExternalQueues
+        - key: com.dynatrace.extension.ms-exchange.queue.internal.active.length
+          value: column:InternalActiveRemoteDeliveryQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.internal.total.length
+          value: column:InternalAggregateDeliveryQueueLengthAllInternalQueues
+        - key: com.dynatrace.extension.ms-exchange.queue.poison.length
+          value: column:PoisonQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.retry.mailbox.length
+          value: column:RetryMailboxDeliveryQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.retry.nonsmtp.length
+          value: column:RetryNonSmtpDeliveryQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.submission.length
+          value: column:SubmissionQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.submission.expired
+          value: column:SubmissionQueueItemsExpiredTotal
+        dimensions:
+        - key: queue.priority
+          value: column:Name
+      - subgroup: QueuesLength
+        query: SELECT Name, ActiveMailboxDeliveryQueueLength, ActiveNonSmtpDeliveryQueueLength, ExternalActiveRemoteDeliveryQueueLength, ExternalAggregateDeliveryQueueLengthAllExternalQueues, InternalActiveRemoteDeliveryQueueLength, InternalAggregateDeliveryQueueLengthAllInternalQueues, PoisonQueueLength, RetryMailboxDeliveryQueueLength, RetryNonSmtpDeliveryQueueLength, SubmissionQueueLength, SubmissionQueueDeferredMessageCount, SubmissionQueueItemsExpiredTotal FROM Win32_PerfFormattedData_MSExchangeTransportQueues_MSExchangeTransportQueues
+        featureSet: queues_2016+
+        metrics:
+        - key: com.dynatrace.extension.ms-exchange.queue.active.mailbox.length
+          value: column:ActiveMailboxDeliveryQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.active.nonsmtp.length
+          value: column:ActiveNonSmtpDeliveryQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.external.active.length
+          value: column:ExternalActiveRemoteDeliveryQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.external.total.length
+          value: column:ExternalAggregateDeliveryQueueLengthAllExternalQueues
+        - key: com.dynatrace.extension.ms-exchange.queue.internal.active.length
+          value: column:InternalActiveRemoteDeliveryQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.internal.total.length
+          value: column:InternalAggregateDeliveryQueueLengthAllInternalQueues
+        - key: com.dynatrace.extension.ms-exchange.queue.poison.length
+          value: column:PoisonQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.retry.mailbox.length
+          value: column:RetryMailboxDeliveryQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.retry.nonsmtp.length
+          value: column:RetryNonSmtpDeliveryQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.submission.length
+          value: column:SubmissionQueueLength
+        - key: com.dynatrace.extension.ms-exchange.queue.submission.deffered
+          value: column:SubmissionQueueDeferredMessageCount
+        - key: com.dynatrace.extension.ms-exchange.queue.submission.expired
+          value: column:SubmissionQueueItemsExpiredTotal
+        dimensions:
+        - key: queue.priority
+          value: column:Name
+      - subgroup: QueuesItems
+        featureSet: queues_2016+
+        query: SELECT Name, ItemsCompletedDeliveryTotal, ItemsCompletedDeliveryPerSecond, ItemsQueuedForDeliveryTotal, ItemsQueuedforDeliveryPerSecond, ItemsQueuedForDeliveryExpiredTotal, MessagesCompletedDeliveryTotal, MessagesCompletedDeliveryPerSecond, MessagesDelayedTotal, MessagesDelayedPerSecond, MessagesQueuedForDelivery, MessagesQueuedForDeliveryTotal, MessagesQueuedforDeliveryPerSecond, MessagesSubmittedTotal, MessagesSubmittedPerSecond FROM Win32_PerfFormattedData_MSExchangeTransportQueues_MSExchangeTransportQueues
+        metrics:
+        - key: com.dynatrace.extension.ms-exchange.queue.items.completed.total
+          value: column:ItemsCompletedDeliveryTotal
+          type: count
+        - key: com.dynatrace.extension.ms-exchange.queue.items.completed.persec
+          value: column:ItemsCompletedDeliveryPerSecond
+        - key: com.dynatrace.extension.ms-exchange.queue.items.queued.total
+          value: column:ItemsQueuedForDeliveryTotal
+          type: count
+        - key: com.dynatrace.extension.ms-exchange.queue.items.queued.persec
+          value: column:ItemsQueuedforDeliveryPerSecond
+        - key: com.dynatrace.extension.ms-exchange.queue.items.queued.expired
+          value: column:ItemsQueuedForDeliveryExpiredTotal
+          type: count
+        - key: com.dynatrace.extension.ms-exchange.queue.messages.completed.total
+          value: column:MessagesCompletedDeliveryTotal
+          type: count
+        - key: com.dynatrace.extension.ms-exchange.queue.messages.completed.persec
+          value: column:MessagesCompletedDeliveryPerSecond
+        - key: com.dynatrace.extension.ms-exchange.queue.messages.delayed.total
+          value: column:MessagesDelayedTotal
+          type: count
+        - key: com.dynatrace.extension.ms-exchange.queue.messages.delayed.persec
+          value: column:MessagesDelayedPerSecond
+        - key: com.dynatrace.extension.ms-exchange.queue.messages.queued
+          value: column:MessagesQueuedForDelivery
+        - key: com.dynatrace.extension.ms-exchange.queue.messages.queued.total
+          value: column:MessagesQueuedForDeliveryTotal
+          type: count
+        - key: com.dynatrace.extension.ms-exchange.queue.messages.queued.persec
+          value: column:MessagesQueuedforDeliveryPerSecond
+        - key: com.dynatrace.extension.ms-exchange.queue.messages.submitted.total
+          value: column:MessagesSubmittedTotal
+          type: count
+        - key: com.dynatrace.extension.ms-exchange.queue.messages.submitted.persec
+          value: column:MessagesSubmittedPerSecond
+        dimensions:
+        - key: queue.priority
+          value: column:Name
+      - subgroup: MSExchangeLogEvents
+        featureSet: events
+        interval:
+          minutes: 1
+        query: SELECT SourceName, EventCode, RecordNumber, CategoryString, Message, Type, TimeGenerated FROM Win32_NTLogEvent WHERE Logfile='MSExchange Management' OR SourceName LIKE '%MSExchange%'
+        type: logfileEvent
+        dimensions:
+          - key: source
+            value: column:SourceName
+          - key: dt.event.key
+            value: column:EventCode
+          - key: category
+            value: column:CategoryString
+          - key: content
+            value: column:Message
+          - key: status
+            value: column:Type
+          - key: recordno
+            value: column:RecordNumber
+          - key: timestamp
+            value: $timestamp(const:ntlog, column:TimeGenerated)
+dashboards: 
+  - path: "dashboards/exchange2016-dashboard.json"
+  - path: "dashboards/exchange2013-dashboard.json"
+alerts:
+  - path: "alerts/mailbox_high_messages_refused.json"
+  - path: "alerts/queue_high_length_external.json"
+  - path: "alerts/queue_high_length_internal.json"
+  - path: "alerts/queue_high_length_items_expired.json"
+  - path: "alerts/queue_high_length_messages_delayed.json"
+  - path: "alerts/queue_high_length_retry_mailbox.json"
+  - path: "alerts/queue_high_length_submission_expired.json"
+
+topology:
+  types:
+    - name: wmi:com_dynatrace_extension_exchange_instance
+      displayName: MS Exchange
+      enabled: true
+      rules:
+      - idPattern: wmi_exchange_{dt.entity.host}
+        sources:
+        - sourceType: Metrics
+          condition: $prefix(com.dynatrace.extension.ms-exchange)
+        attributes: []
+        requiredDimensions: []
+        instanceNamePattern: MS Exchange on {dt.entity.host}
+      - idPattern: wmi_exchange_{host}
+        sources:
+        - sourceType: Metrics
+          condition: $prefix(com.dynatrace.extension.ms-exchange)
+        attributes: []
+        requiredDimensions: []
+        instanceNamePattern: MS Exchange on {host}
+    - name: wmi:com_dynatrace_extension_exchange_mailbox
+      displayName: MS Exchange Mailbox
+      enabled: true
+      rules:
+      - idPattern: wmi_exchange_{dt.entity.host}_{mailbox.name}
+        sources:
+        - sourceType: Metrics
+          condition: $prefix(com.dynatrace.extension.ms-exchange.mailbox)
+        attributes:
+          - pattern: '{mailbox.name}'
+            key: wmi_exchange_mailbox
+            displayName: Name
+        requiredDimensions: []
+        instanceNamePattern: MS Exchange {mailbox.name} mailbox on {dt.entity.host}
+      - idPattern: wmi_exchange_{host}_{mailbox.name}
+        sources:
+        - sourceType: Metrics
+          condition: $prefix(com.dynatrace.extension.ms-exchange.mailbox)
+        attributes:
+          - pattern: '{mailbox.name}'
+            key: wmi_exchange_mailbox
+            displayName: Name
+        requiredDimensions: []
+        instanceNamePattern: MS Exchange {mailbox.name} mailbox on {host}
+    - name: wmi:com_dynatrace_extension_exchange_queue
+      displayName: MS Exchange Queue
+      enabled: true
+      rules:
+      - idPattern: wmi_exchange_{dt.entity.host}_{queue.priority}
+        sources:
+        - sourceType: Metrics
+          condition: $prefix(com.dynatrace.extension.ms-exchange.queue)
+        attributes:
+          - pattern: '{queue.priority}'
+            key: wmi_exchange_queue
+            displayName: Name
+        requiredDimensions: []
+        instanceNamePattern: MS Exchange {queue.priority} queue on {dt.entity.host}
+      - idPattern: wmi_exchange_{host}_{queue.priority}
+        sources:
+        - sourceType: Metrics
+          condition: $prefix(com.dynatrace.extension.ms-exchange.queue)
+        attributes:
+          - pattern: '{queue.priority}'
+            key: wmi_exchange_queue
+            displayName: Name
+        requiredDimensions: []
+        instanceNamePattern: MS Exchange {queue.priority} queue on {host}
+
+  relationships:
+    - typeOfRelation: CHILD_OF
+      fromType: wmi:com_dynatrace_extension_exchange_mailbox
+      toType: wmi:com_dynatrace_extension_exchange_instance
+      enabled: true
+      sources:
+        - sourceType: Metrics
+          condition: $prefix(com.dynatrace.extension.ms-exchange)
+    - typeOfRelation: CHILD_OF
+      fromType: wmi:com_dynatrace_extension_exchange_queue
+      toType: wmi:com_dynatrace_extension_exchange_instance
+      enabled: true
+      sources:
+        - sourceType: Metrics
+          condition: $prefix(com.dynatrace.extension.ms-exchange)
+
+    - typeOfRelation: RUNS_ON
+      fromType: wmi:com_dynatrace_extension_exchange_instance
+      toType: host
+      enabled: true
+      sources:
+        - sourceType: Metrics
+          condition: $prefix(com.dynatrace.extension.ms-exchange)
+    - typeOfRelation: RUNS_ON
+      fromType: wmi:com_dynatrace_extension_exchange_mailbox
+      toType: host
+      enabled: true
+      sources:
+        - sourceType: Metrics
+          condition: $prefix(com.dynatrace.extension.ms-exchange)
+    - typeOfRelation: RUNS_ON
+      fromType: wmi:com_dynatrace_extension_exchange_queue
+      toType: host
+      enabled: true
+      sources:
+        - sourceType: Metrics
+          condition: $prefix(com.dynatrace.extension.ms-exchange)
+
+screens:
+  - entityType: wmi:com_dynatrace_extension_exchange_mailbox
+    propertiesCard:
+      properties:
+        - type: ATTRIBUTE
+          attribute:
+            key: wmi_exchange_mailbox
+            displayName: Name
+        - type: RELATION
+          relation:
+            entitySelectorTemplate: type(wmi:com_dynatrace_extension_exchange_instance), toRelationships.isChildOf($(entityConditions))
+            displayName: MS Exchange instance
+        - type: RELATION
+          relation:
+            entitySelectorTemplate: type(host), toRelationships.runsOn($(entityConditions))
+            displayName: Host
+    detailsSettings:
+      staticContent:
+        showProblems: true
+        showProperties: true
+        showTags: true
+        showGlobalFilter: true
+        showAddTag: true
+      layout:
+        autoGenerate: false
+        cards:
+          - type: "CHART_GROUP"
+            key: "wmi_mailbox_messages"
+          - type: "CHART_GROUP"
+            key: "wmi_mailbox_load"
+    chartsCards:
+      - key: "wmi_mailbox_messages"
+        displayName: "Messages"
+        numberOfVisibleCharts: 2
+        charts:
+          - displayName: "Total messages"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.mailbox.messages.sent.total.count:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.mailbox.messages.received.total.count:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.mailbox.messages.refused.forsize.count:splitBy()"
+          - displayName: "Total messages bytes"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: AREA
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.mailbox.bytes.sent.total.count:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.mailbox.bytes.received.total.count:splitBy()"
+      - key: "wmi_mailbox_load"
+        displayName: "Load"
+        numberOfVisibleCharts: 2
+        charts:
+          - displayName: "Messages"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: LINE
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.mailbox.messages.sent.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.mailbox.messages.received.persec:splitBy()"
+          - displayName: "Bytes"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: AREA
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.mailbox.bytes.sent.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.mailbox.bytes.received.persec:splitBy()"
+  - entityType: wmi:com_dynatrace_extension_exchange_queue
+    propertiesCard:
+      properties:
+        - type: ATTRIBUTE
+          attribute:
+            key: wmi_exchange_queue
+            displayName: Name
+        - type: RELATION
+          relation:
+            entitySelectorTemplate: type(wmi:com_dynatrace_extension_exchange_instance), toRelationships.isChildOf($(entityConditions))
+            displayName: MS Exchange instance
+        - type: RELATION
+          relation:
+            entitySelectorTemplate: type(host), toRelationships.runsOn($(entityConditions))
+            displayName: Host
+    detailsSettings:
+      staticContent:
+        showProblems: true
+        showProperties: true
+        showTags: true
+        showGlobalFilter: true
+        showAddTag: true
+      layout:
+        autoGenerate: false
+        cards:
+          - type: "CHART_GROUP"
+            key: "wmi_queue_length"
+          - type: "CHART_GROUP"
+            key: "wmi_queue_items"
+          - type: "CHART_GROUP"
+            key: "wmi_queue_messages"
+    chartsCards:
+      - key: "wmi_queue_length"
+        displayName: "Queues length"
+        numberOfVisibleCharts: 3
+        charts:
+          - displayName: "Active queues"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.active.mailbox.length:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.active.nonsmtp.length:splitBy()"
+          - displayName: "External queues"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.external.active.length:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.external.total.length:splitBy()"
+          - displayName: "Internal queues"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.internal.active.length:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.internal.total.length:splitBy()"
+          - displayName: "Retry queues"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.retry.mailbox.length:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.retry.nonsmtp.length:splitBy()"
+          - displayName: "Submission queues"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.submission.length:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.submission.expired:splitBy()"
+          - displayName: "Poison queue"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.poison.length:splitBy()"
+      - key: "wmi_queue_items"
+        displayName: "MS Exchange 2016+ Queues items"
+        numberOfVisibleCharts: 2
+        charts:
+          - displayName: "Total items"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.items.completed.total.count:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.items.queued.total.count:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.items.queued.expired.count:splitBy()"
+          - displayName: "Items load"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: LINE
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.items.completed.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.items.queued.persec:splitBy()"
+      - key: "wmi_queue_messages"
+        displayName: "MS Exchange 2016+ Queues messages"
+        numberOfVisibleCharts: 2
+        charts:
+          - displayName: "Total messages"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.messages.completed.total.count:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.messages.delayed.total.count:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.messages.queued.total.count:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.messages.submitted.total.count:splitBy()"
+          - displayName: "Messages load"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: LINE
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.messages.completed.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.messages.delayed.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.messages.queued.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.messages.submitted.persec:splitBy()"
+  - entityType: wmi:com_dynatrace_extension_exchange_instance
+    propertiesCard:
+      properties:
+        - type: RELATION
+          relation:
+            entitySelectorTemplate: type(host), toRelationships.runsOn($(entityConditions))
+            displayName: Host
+    detailsSettings:
+      staticContent:
+        showProblems: true
+        showProperties: true
+        showTags: true
+        showGlobalFilter: true
+        showAddTag: true
+      layout:
+        autoGenerate: false
+        cards:
+          - type: "ENTITIES_LIST"
+            key: "wmi_exchange_mailboxes"
+          - type: "ENTITIES_LIST"
+            key: "wmi_exchange_queues"
+    entitiesListCards:
+      - key: "wmi_exchange_mailboxes"
+        displayName: "Mailboxes"
+        entitySelectorTemplate: "type(wmi:com_dynatrace_extension_exchange_mailbox), fromRelationships.isChildOf($(entityConditions))"
+        pageSize: 5
+        displayCharts: false
+        displayIcons: true
+        enableDetailsExpandability: true
+        numberOfVisibleCharts: 1
+        charts: 
+          - displayName: "Load"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: LINE
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.mailbox.messages.sent.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.mailbox.messages.received.persec:splitBy()"
+      - key: "wmi_exchange_queues"
+        displayName: "Queues"
+        entitySelectorTemplate: "type(wmi:com_dynatrace_extension_exchange_queue), fromRelationships.isChildOf($(entityConditions))"
+        pageSize: 5
+        displayCharts: false
+        displayIcons: true
+        enableDetailsExpandability: true
+        numberOfVisibleCharts: 1
+        charts: 
+          - displayName: "Active queues"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.active.mailbox.length:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.active.nonsmtp.length:splitBy()"
+          - displayName: "External queues"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.external.active.length:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.external.total.length:splitBy()"
+          - displayName: "Internal queues"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.internal.active.length:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.internal.total.length:splitBy()"

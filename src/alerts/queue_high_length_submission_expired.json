@@ -1,0 +1,18 @@
+{
+    "metricId": "com.dynatrace.extension.ms-exchange.queue.submission.expired",
+    "name": "MSExchange Expired Submissions Queue Length",
+    "description": "High value of expired submissions queue length",
+    "aggregationType": "AVG",
+    "severity": "CUSTOM_ALERT",
+    "enabled": true,
+    "monitoringStrategy": {
+        "type": "AUTO_ADAPTIVE_BASELINE",
+        "samples": 5,
+        "violatingSamples": 3,
+        "dealertingSamples": 3,
+        "alertCondition": "ABOVE",
+        "numberOfSignalFluctuations": 1,
+        "alertingOnMissingData": false
+    },
+    "eventType": "CUSTOM_ALERT"
+}
