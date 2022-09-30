@@ -1,6 +1,6 @@
 name: com.dynatrace.extension.ms-exchange
-version: 1.2.3
-minDynatraceVersion: "1.223"
+version: 1.2.4
+minDynatraceVersion: "1.233.0"
 author:
   name: Dynatrace
 
@@ -476,6 +476,50 @@ topology:
           condition: $prefix(com.dynatrace.extension.ms-exchange)
 
 screens:
+  - entityType: HOST
+    detailsInjections:
+      - type: ENTITIES_LIST
+        key: ms-exchange-host-feature-chart
+        conditions:
+          - relatedEntity|entitySelectorTemplate=type(wmi:com_dynatrace_extension_exchange_instance), fromRelationships.RunsOn($(entityConditions))
+    entitiesListCards:
+      - key: ms-exchange-host-feature-chart
+        displayName: MS-Exchange metrics
+        entitySelectorTemplate: "type(wmi:com_dynatrace_extension_exchange_instance), fromRelationships.runsOn($(entityConditions))"
+        pageSize: 5
+        displayCharts: true
+        displayIcons: true
+        enableDetailsExpandability: true
+        numberOfVisibleCharts: 2
+        charts:
+          - displayName: "Mailboxes"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.mailbox.messages.sent.persec:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.mailbox.messages.received.persec:splitBy()"
+          - displayName: "Active queues"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.active.mailbox.length:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.active.nonsmtp.length:splitBy()"
+          - displayName: "External queues"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.external.active.length:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.external.total.length:splitBy()"
+          - displayName: "Internal queues"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: COLUMN
+            metrics:
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.internal.active.length:splitBy()"
+              - metricSelector: "com.dynatrace.extension.ms-exchange.queue.internal.total.length:splitBy()"
   - entityType: wmi:com_dynatrace_extension_exchange_mailbox
     propertiesCard:
       properties:
@@ -682,6 +726,8 @@ screens:
             key: "wmi_exchange_mailboxes"
           - type: "ENTITIES_LIST"
             key: "wmi_exchange_queues"
+          - type: "ENTITIES_LIST"
+            key: "dt_host_instance"
     entitiesListCards:
       - key: "wmi_exchange_mailboxes"
         displayName: "Mailboxes"
@@ -729,3 +775,28 @@ screens:
             metrics:
               - metricSelector: "com.dynatrace.extension.ms-exchange.queue.internal.active.length:splitBy()"
               - metricSelector: "com.dynatrace.extension.ms-exchange.queue.internal.total.length:splitBy()"
+      - key: "dt_host_instance"
+        displayName: "Host metrics"
+        entitySelectorTemplate: "type(Host), toRelationships.runsOn($(entityConditions))"
+        pageSize: 5
+        displayCharts: true
+        displayIcons: true
+        enableDetailsExpandability: true
+        numberOfVisibleCharts: 2
+        charts:
+          - displayName: "CPU usage"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: LINE
+            metrics:
+              - metricSelector: "builtin:host.cpu.idle:splitBy()"
+              - metricSelector: "builtin:host.cpu.user:splitBy()"
+              - metricSelector: "builtin:host.cpu.system:splitBy()"
+          - displayName: "Memory usage"
+            visualization:
+              themeColor: DEFAULT
+              seriesType: LINE
+            metrics:
+              - metricSelector: "builtin:host.mem.total:splitBy()"
+              - metricSelector: "builtin:host.mem.used:splitBy()"
+              - metricSelector: "builtin:host.mem.recl:splitBy()"
