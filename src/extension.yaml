@@ -1,8 +1,17 @@
-name: com.dynatrace.extension.ms-exchange
-version: 1.2.4
+name: custom:com.dynatrace.extension.ms-exchange
+version: 1.2.5
 minDynatraceVersion: "1.233.0"
 author:
   name: Dynatrace
+
+processes:
+  - name: MS-Exchange
+    detection:
+    - id: ext.msservicehost
+      processGroupName: Microsoft Exchange Service Host
+      rules:
+      - property: executable
+        condition: "$eq(Microsoft.Exchange.ServiceHost.exe)"
 
 metrics:
   - key: com.dynatrace.extension.ms-exchange.mailbox.messages.sent.total.count
