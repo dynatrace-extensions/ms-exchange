@@ -1,5 +1,5 @@
 name: custom:com.dynatrace.extension.ms-exchange
-version: 1.2.5
+version: 1.2.6
 minDynatraceVersion: "1.233.0"
 author:
   name: Dynatrace
@@ -198,7 +198,7 @@ wmi:
         value: this:device.host
     subgroups:
       - subgroup: MessagesSent
-        query: SELECT Name, MessagesSentTotal, MessagesSentPersec, MessageBytesSentTotal, MessageBytesSentPersec FROM Win32_PerfFormattedData_MSExchangeDeliverySmtpSend_MSExchangeDeliverySmtpSend
+        query: SELECT Name, MessagesSentTotal, MessagesSentPersec, MessageBytesSentTotal, MessageBytesSentPersec FROM Win32_PerfFormattedData_MSExchangeTransportSmtpSend_MSExchangeTransportSmtpSend
         metrics:
           - key: com.dynatrace.extension.ms-exchange.mailbox.messages.sent.total
             value: column:MessagesSentTotal
